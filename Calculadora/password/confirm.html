@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmação - METRIQ</title>
+  <link rel="stylesheet" href="./confirm.css">
+</head>
+<body>
+  <div class="background"></div>
+
+  <h1 class="main-title">metriQ</h1>
+
+  <div class="confirm-container">
+    <h2 class="subtitle">Insira o código de confirmação</h2>
+
+    <div class="code-inputs">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+    </div>
+
+    <a href="../password/change.html"><button class="btn-validate">Validar código</button></a>
+  </div>
+
+  <script>
+    const inputs = document.querySelectorAll('.code-inputs input');
+
+    inputs.forEach((input, index) => {
+      input.addEventListener('input', () => {
+        if (input.value.length === 1 && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === "Backspace" && input.value === "" && index > 0) {
+          inputs[index - 1].focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

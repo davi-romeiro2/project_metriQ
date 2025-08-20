@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - METRIQ</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Lado esquerdo (formulário) -->
+    <div class="left-side">
+      <div class="form-box">
+        <h1>Login</h1>
+        <p>Entre na sua conta.</p>
+
+        <form>
+          <input type="text" id="usuario" name="usuario" placeholder="Usuário">
+
+          <div class="input-password password-wrapper">
+            <input type="password" id="senha" name="senha" placeholder="Senha" class="password-input">
+            <img src="../img/closed_eye.svg" alt="Mostrar senha" class="eye-icon open-eye">
+            <img src="../img/opened_eye.svg" alt="Esconder senha" class="eye-icon closed-eye">
+          </div>
+
+          <a href="../password/password.html" class="forgot">Esqueceu a senha?</a>
+
+          <a href="../welcome/welcome.html" class="btn-login">Login</a>
+        </form>
+      </div>
+    </div>
+
+    <!-- Lado direito (imagem + logo) -->
+    <div class="right-side">
+      <div class="overlay">
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Seleciona apenas o input dentro da div .input-password
+    const passwordWrapper = document.querySelector('.input-password');
+    const input = passwordWrapper.querySelector('input[type="password"]');
+    const openEye = passwordWrapper.querySelector('.open-eye');
+    const closedEye = passwordWrapper.querySelector('.closed-eye');
+
+    // Alterna para mostrar a senha
+    openEye.addEventListener('click', () => {
+      input.type = 'text';           // mostra a senha
+      openEye.style.display = 'none';
+      closedEye.style.display = 'block';
+    });
+
+    // Alterna para esconder a senha
+    closedEye.addEventListener('click', () => {
+      input.type = 'password';       // esconde a senha
+      closedEye.style.display = 'none';
+      openEye.style.display = 'block';
+    });
+
+  </script>
+</body>
+
+</html>

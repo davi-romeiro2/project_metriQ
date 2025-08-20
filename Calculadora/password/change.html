@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação - METRIQ</title>
+    <link rel="stylesheet" href="./change.css">
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <h1 class="main-title">metriQ</h1>
+
+    <div class="confirm-container">
+        <h2 class="subtitle">Insira sua nova senha</h2>
+
+        <!-- Lista de requisitos -->
+        <ul class="password-requirements">
+            <li id="req-length"><span class="status">✗</span> Mínimo 8 caracteres</li>
+            <li id="req-special"><span class="status">✗</span> Mínimo 1 caracter especial (@#$%*&?)</li>
+            <li id="req-number"><span class="status">✗</span> Mínimo 1 caracter numérico</li>
+            <li id="req-uppercase"><span class="status">✗</span> Mínimo 1 letra maiúscula</li>
+        </ul>
+
+        <!-- Inputs de senha -->
+        <div class="password-wrapper">
+            <input type="password" id="password" placeholder="Nova senha" class="password-input">
+            <img src="../img/closed_eye.svg" alt="Mostrar senha" class="eye-icon open-eye">
+            <img src="../img/opened_eye.svg" alt="Esconder senha" class="eye-icon closed-eye">
+        </div>
+
+        <div class="password-wrapper">
+            <input type="password" id="confirm-password" placeholder="Confirme a senha" class="password-input">
+            <img src="../img/closed_eye.svg" alt="Mostrar senha" class="eye-icon open-eye">
+            <img src="../img/opened_eye.svg" alt="Esconder senha" class="eye-icon closed-eye">
+        </div>
+
+        <a href="../login/login.html"><button class="btn-validate">Alterar senha</button></a>
+    </div>
+
+    <script>
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm-password');
+
+        const reqLength = document.getElementById('req-length');
+        const reqSpecial = document.getElementById('req-special');
+        const reqNumber = document.getElementById('req-number');
+        const reqUppercase = document.getElementById('req-uppercase');
+
+        // Seleciona todos os wrappers
+        const wrappers = document.querySelectorAll('.password-wrapper');
+
+        wrappers.forEach(wrapper => {
+            const input = wrapper.querySelector('.password-input');
+            const openEye = wrapper.querySelector('.open-eye');
+            const closedEye = wrapper.querySelector('.closed-eye');
+
+            // Ao clicar no olho aberto
+            openEye.addEventListener('click', () => {
+                input.type = 'text'; // mostra a senha
+                openEye.style.display = 'none';
+                closedEye.style.display = 'block';
+            });
+
+            // Ao clicar no olho fechado
+            closedEye.addEventListener('click', () => {
+                input.type = 'password'; // esconde a senha
+                closedEye.style.display = 'none';
+                openEye.style.display = 'block';
+            });
+        });
+
+
+        function validatePassword() {
+            const passVal = password.value;
+
+            // Função para atualizar cada requisito individualmente
+            function updateReq(element, condition) {
+                if (condition) {
+                    element.classList.add('valid');
+                    element.querySelector('.status').textContent = '✔';
+                } else {
+                    element.classList.remove('valid');
+                    element.querySelector('.status').textContent = '✗';
+                }
+            }
+
+            updateReq(reqLength, passVal.length >= 8);
+            updateReq(reqSpecial, /[!@#$%*&?]/.test(passVal));
+            updateReq(reqNumber, /\d/.test(passVal));
+            updateReq(reqUppercase, /[A-Z]/.test(passVal));
+        }
+
+        // Validar em tempo real enquanto o usuário digita
+        password.addEventListener('input', validatePassword);
+        confirmPassword.addEventListener('input', validatePassword);
+
+    </script>
+</body>
+
+</html>

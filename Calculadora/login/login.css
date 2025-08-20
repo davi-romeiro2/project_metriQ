@@ -1,0 +1,156 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+/* Container principal */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Lado esquerdo */
+.left-side {
+  flex: 1;
+  background: #1c1c1c;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box {
+  width: 80%;
+  max-width: 350px;
+  padding: 40px 30px; /* mais espaço interno */
+}
+
+.form-box h1 {
+  font-size: 2.2rem;
+  margin-bottom: 15px; /* mais espaço abaixo do título */
+}
+
+.form-box p {
+  margin-bottom: 30px;
+  color: #bbb;
+  line-height: 1.6; /* mais espaçamento entre linhas */
+}
+
+/* Inputs */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 25px; /* aumenta o espaçamento entre inputs */
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #555; /* borda um pouco mais grossa */
+  color: #fff;
+  font-size: 1.05rem;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 2px solid #ff4b4b;
+}
+
+/* Campo de senha com ícone/imagem */
+.input-password {
+  position: relative;
+}
+
+.input-password input {
+  width: 100%;
+  padding-right: 40px; /* espaço para a imagem do olho */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 30px;       /* define espaço para imagem */
+  height: 30px;      /* define espaço para imagem */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+}
+
+/* Link de esqueci senha */
+.forgot {
+  display: block;
+  margin-bottom: 30px; /* mais espaçamento */
+  font-size: 0.9rem;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.forgot:hover {
+  color: #ff4b4b;
+}
+
+/* Botão */
+.btn-login {
+  display: inline-block;
+  width: 100%;
+  text-align: center; 
+  text-decoration: none;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  background: #ff4b4b;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-login:hover {
+  background: #e64444;
+}
+
+/* Lado direito */
+.right-side {
+  flex: 1;
+  height: 100vh;
+  background: url('../img/image_login.svg') no-repeat center center;
+  background-size: cover;   /* cobre todo o espaço */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 35%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.open-eye {
+  display: block;
+}
+
+.closed-eye {
+  display: none;
+}
